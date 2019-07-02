@@ -7,17 +7,17 @@ const Table = (props) => {
       return <div className="empty-plate" style={{ top: -7 * index }}/>
     })
   }
-
+  let allowance = 100
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${ /* Give me how much money I have left */ } remaining!
+        You have: ${allowance} remaining!
       </h1>
       <div className="table">
         <div className="stack">
           {
-            /* 
-               renderPlates takes an array 
+            /*
+               renderPlates takes an array
                and renders an empty plate
                for every element in the array
             */
