@@ -24,6 +24,7 @@ handleAddingPlates = () => {
 }
 
 handleBudget = (sushiPrice) => {
+
 	this.setState({
 		currentBudget: parseInt(this.state.currentBudget) - parseInt(sushiPrice)
 		})
