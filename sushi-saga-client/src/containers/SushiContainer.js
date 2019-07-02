@@ -1,16 +1,19 @@
 import React, { Fragment } from 'react'
 import MoreButton from '../components/MoreButton'
+import Sushi from '../components/Sushi'
 
 const SushiContainer = (props) => {
+  //console.log('sushicontainer: ', props);
+
   return (
     <Fragment>
       <div className="belt">
         {
-          /* 
-             Render Sushi components here!
-          */
+          props.currentSushi.map(sushi => {
+            return <Sushi key={Math.round(Math.random() * 1000000)} sushi={sushi} sushiClickHandler={props.sushiClickHandler} />
+          })
         }
-        <MoreButton />
+        <MoreButton moreButtonHandler={props.moreButtonHandler}/>
       </div>
     </Fragment>
   )
