@@ -1,17 +1,22 @@
 import React, { Fragment } from 'react'
 
-const Table = (props) => {
+class Table extends React.Component {
 
-  const renderPlates = (array) => {
+  
+  renderPlates = (array) => {
     return array.map((x, index) => {
       return <div className="empty-plate" style={{ top: -7 * index }}/>
     })
   }
 
+  
+
+  render(){
+    console.log(this.props.plates)
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${ /* Give me how much money I have left */ } remaining!
+        {this.props.budget >= 0 ? `You have: ${ this.props.budget } remaining!` : "You are out of money!"}
       </h1>
       <div className="table">
         <div className="stack">
@@ -21,12 +26,13 @@ const Table = (props) => {
                and renders an empty plate
                for every element in the array
             */
-            renderPlates([])
+            this.props.budget > 0 ? this.renderPlates(this.props.plates) : null
           }
         </div>
       </div>
     </Fragment>
   )
+}
 }
 
 export default Table
