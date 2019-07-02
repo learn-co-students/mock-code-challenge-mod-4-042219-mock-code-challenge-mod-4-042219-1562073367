@@ -8,20 +8,24 @@ const Table = (props) => {
     })
   }
 
+  const budget = 100;
+  const spent = (arrSushiObj) => {
+    let counter = 0;
+    for(let i = 0; i < arrSushiObj.length; i++) {
+      counter += i.price
+    }
+    return counter
+  }
+
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${ /* Give me how much money I have left */ } remaining!
+        You have: ${ budget - spent(props.table) } remaining!
       </h1>
       <div className="table">
         <div className="stack">
           {
-            /* 
-               renderPlates takes an array 
-               and renders an empty plate
-               for every element in the array
-            */
-            renderPlates([])
+            renderPlates(props.table)
           }
         </div>
       </div>
