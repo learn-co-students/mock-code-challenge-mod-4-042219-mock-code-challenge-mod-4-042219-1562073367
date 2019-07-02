@@ -10,7 +10,10 @@ class App extends Component {
   state = {
     data: [],
     eatedSushi: [],
-    showItems: 4
+    selectedSush: {},
+    showItemsStart: 0,
+    showItemsEnd: 4,
+    eatedSushiPrice: 0
   }
 
   componentDidMount() {
@@ -21,18 +24,34 @@ class App extends Component {
 
   eatSush = (props) => {
     this.setState({
-      eatedSushi: [...this.state.eatedSushi, props.sushi]
+      eatedSushi: [...this.state.eatedSushi, props.sushi],
+      selectedSush: props
     })
-    // console.log("Heyo")
-    // debugger
+    this.determineBudget()
+  }
+
+  moreButtonHandler = () => {
+    this.setState({
+      showItemsStart: this.state.showItemsStart + 4,
+      showItemsEnd: this.state.showItemsEnd + 4
+    })
+  }
+
+  determineBudget = () => {
+    var a = this.state.eatedSushi,
+        total = 0;
+    for (var i=0; i<a.length; i++) {
+        total += a[i].price;
+    }
+    this.setState({eatedSushiPrice: total})
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="app">
-        <SushiContainer state={this.state} eatSush={this.eatSush} />
-        <Table />
+        <SushiContainer state={this.state} eatSush={this.eatSush} moreButtonHandler={this.moreButtonHandler}/>
+        <Table eatedSushi={this.state.eatedSushi} state={this.state}/>
       </div>
     );
   }

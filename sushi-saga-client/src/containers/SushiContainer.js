@@ -12,12 +12,12 @@ const SushiContainer = (props) => {
     <Fragment>
       <div className="belt">
           {
-            props.state.data.slice(0, props.state.showItems).map((sushi) => {
+            props.state.data.slice(props.state.showItemsStart, props.state.showItemsEnd).map((sushi) => {
                 return <Sushi sushi={sushi} key={sushi.id} eatSush={props.eatSush} state={props.state}/>})
           }
 
         
-        <MoreButton />
+        <MoreButton moreButtonHandler={props.moreButtonHandler}/>
       </div>
     </Fragment>
   )
