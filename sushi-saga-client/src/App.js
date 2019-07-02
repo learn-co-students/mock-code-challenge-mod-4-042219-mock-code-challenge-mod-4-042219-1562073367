@@ -5,24 +5,33 @@ import Table from './containers/Table';
 // Endpoint!
 const API = "http://localhost:3000/sushis"
 
-
 class App extends Component {
   
   state = {
-    sushi: []
+    data: [],
+    eatedSushi: [],
+    showItems: 4
   }
 
   componentDidMount() {
     fetch(API)
       .then(response => response.json())
-      .then(data => this.setState({ sushi: data }));
+      .then(data => this.setState({ data: data }));
+  }
+
+  eatSush = (props) => {
+    this.setState({
+      eatedSushi: [...this.state.eatedSushi, props.sushi]
+    })
+    // console.log("Heyo")
+    // debugger
   }
 
   render() {
     console.log(this.state)
     return (
       <div className="app">
-        <SushiContainer  />
+        <SushiContainer state={this.state} eatSush={this.eatSush} />
         <Table />
       </div>
     );
