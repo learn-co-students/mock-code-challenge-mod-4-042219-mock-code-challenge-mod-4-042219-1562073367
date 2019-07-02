@@ -58,11 +58,18 @@ class App extends Component {
     }
   }
 
+  handleMoney = (amount) => {
+    this.setState({
+      money: this.state.money + (+amount)
+    })
+  } 
+
   render() {
     return (
       <div className="app">
         <SushiContainer sushi={this.state.sushi} money={this.state.money} handleSushi={this.handleSushi} showMoreSushi={this.showMoreSushi} start={this.state.start} end={this.state.end} />
-        <Table sushi={this.state.sushi} money={this.state.money}/>
+        <Table sushi={this.state.sushi} money={this.state.money} handleMoney={this.handleMoney} />
+        
       </div>
     );
   }

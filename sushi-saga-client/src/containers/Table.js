@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import MoneyForm from '../components/MoneyForm'
 
 const Table = (props) => {
 
@@ -14,6 +15,7 @@ const Table = (props) => {
     <Fragment>
       <h1 className="remaining">
         You have: ${props.money} remaining!
+        <MoneyForm handleMoney={props.handleMoney}/>
       </h1>
       <div className="table">
         <div className="stack">
