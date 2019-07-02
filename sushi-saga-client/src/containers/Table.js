@@ -11,7 +11,9 @@ const Table = (props) => {
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${ /* Give me how much money I have left */ } remaining!
+        You have: ${100 - props.sushiCollection.map(sushi => {
+          return sushi.price
+        })} remaining!
       </h1>
       <div className="table">
         <div className="stack">
