@@ -23,9 +23,16 @@ class App extends Component {
   }
 
   eatSush = (props) => {
+
+    var a = this.state.eatedSushi,
+        total = 0;
+    for (var i=0; i<a.length; i++) {
+        total += a[i].price;
+    }
+
     this.setState({
       eatedSushi: [...this.state.eatedSushi, props.sushi],
-      selectedSush: props
+      selectedSush: props,
     })
     this.determineBudget()
   }
