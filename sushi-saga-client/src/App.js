@@ -10,7 +10,8 @@ class App extends Component {
     sushiList: [],
     startingIndex: 0,
     wallet: 100,
-    sushiEaten: []
+    sushiEaten: [],
+    walletInput: 0
   }
 
   componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
 
   moreButtonHandler = () => {
     this.setState({
-      startingIndex: this.state.startingIndex + 4
+      startingIndex: this.state.startingIndex === 96 ? 0 : this.state.startingIndex + 4
     })
   }
 
@@ -49,14 +50,28 @@ class App extends Component {
     }
   }
 
+  walletChange = (event) => {
+    this.setState({
+      walletInput: event.target.value
+    })
+  }
+
+  walletSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      wallet: this.state.wallet + (parseInt(this.state.walletInput, 10))
+    })
+  }
+
   render() {
-    //console.log('state: ', this.state);
+    //console.log('state:', this.state)
+    console.log(this.state.walletInput)
     let currentSushi = this.state.sushiList.slice(this.state.startingIndex, this.state.startingIndex + 4)
 
     return (
       <div className="app">
         <SushiContainer currentSushi={currentSushi} moreButtonHandler={this.moreButtonHandler} sushiClickHandler={this.sushiClickHandler} />
-        <Table wallet={this.state.wallet} sushiEaten={this.state.sushiEaten}/>
+        <Table wallet={this.state.wallet} sushiEaten={this.state.sushiEaten} walletSubmit={this.walletSubmit} walletChange={this.walletChange}/>
       </div>
     );
   }

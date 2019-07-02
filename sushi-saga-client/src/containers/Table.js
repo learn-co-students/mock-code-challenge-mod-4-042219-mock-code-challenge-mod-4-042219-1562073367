@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 const Table = (props) => {
-  //console.log('table: ', props);
+  //console.log('table:', props);
 
   const renderPlates = (array) => {
     return array.map((x, index) => {
@@ -25,6 +25,16 @@ const Table = (props) => {
             renderPlates(props.sushiEaten)
           }
         </div>
+
+        <div className="sushiWallet">
+          <form onSubmit={props.walletSubmit} onChange={props.walletChange}>
+            $ <input type="number" name="money" placeholder="0" value={props.walletInput}/>
+            {
+            <input type="submit" value="add money to wallet" />
+            }
+          </form>
+        </div>
+
       </div>
     </Fragment>
   )

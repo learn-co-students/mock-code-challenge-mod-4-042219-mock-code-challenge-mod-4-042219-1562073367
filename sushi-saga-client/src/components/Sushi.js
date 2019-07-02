@@ -3,7 +3,7 @@ import React from 'react'
 
 
 const Sushi = (props) => {
-  console.log('sushi: ', props);
+  console.log('sushi:', props.sushi.id);
   const name = props.sushi.name
   const price = props.sushi.price
 
