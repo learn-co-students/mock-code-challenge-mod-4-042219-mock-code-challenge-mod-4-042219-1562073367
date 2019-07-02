@@ -28,9 +28,15 @@ class SushiContainer extends React.Component {
   }
 
   handleMoreButton = () => {
+    if (this.state.sushiBelt.length > 4){
     this.setState({
       sushiBelt: this.state.sushiBelt.slice(4)
-    })
+      })
+    } else {
+      this.setState({
+        sushiBelt: this.state.allSushi
+      })
+    }
   }
 
 
@@ -42,7 +48,7 @@ render(){
         {
           this.createSushi()
         }
-        <MoreButton handleRemovingPlates={this.props.handleRemovingPlates} handleMoreButton={this.handleMoreButton} />
+        <MoreButton handleMoreButton={this.handleMoreButton} />
       </div>
     </Fragment>
   )

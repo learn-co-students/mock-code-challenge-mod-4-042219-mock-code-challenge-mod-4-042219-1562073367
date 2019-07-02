@@ -16,15 +16,11 @@ class App extends Component {
 	}
 
 handleAddingPlates = () => {
+	if (this.state.currentBudget > 0){
 	this.setState({
 	  array: [...this.state.array, 1]
-	})
-}
-
-handleRemovingPlates = () => {
-	this.setState({
-		array: []
-	})
+		})
+	}
 }
 
 handleBudget = (sushiPrice) => {

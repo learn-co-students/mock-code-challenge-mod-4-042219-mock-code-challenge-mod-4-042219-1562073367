@@ -26,7 +26,7 @@ class Table extends React.Component {
                and renders an empty plate
                for every element in the array
             */
-            this.props.budget > 0 ? this.renderPlates(this.props.plates) : null
+           this.renderPlates(this.props.plates)
           }
         </div>
       </div>
