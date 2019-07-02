@@ -7,11 +7,27 @@ const API = "http://localhost:3000/sushis"
 
 class App extends Component {
 
+  state = {
+    wallet: 100,
+    bill: 0,
+    eatten: []
+  }
+
+  sushiEatten = (sushiObject) => {
+    const updated = this.state.eatten.push(sushiObject)
+    this.setState((prevState) => {
+      return {
+        bill: prevState.bill + sushiObject.price,
+        eatten: prevState.eatten
+      }
+    })
+  }
+
   render() {
     return (
       <div className="app">
-        <SushiContainer  />
-        <Table />
+        <SushiContainer sushiEatten={this.sushiEatten} {...this.state}/>
+        <Table bill={this.state.bill} eatten={this.state.eatten} wallet={this.state.wallet}/>
       </div>
     );
   }
